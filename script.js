@@ -136,3 +136,29 @@ function adjustLayout() {
 // Executar a função ao carregar a página e ao redimensionar a janela
 window.addEventListener('load', adjustLayout);
 window.addEventListener('resize', adjustLayout);
+
+// Seleciona a foto de perfil
+const profilePic = document.querySelector('.profile-pic');
+
+// Seleciona o overlay e a imagem ampliada
+const overlay = document.getElementById('overlay');
+const expandedImg = document.getElementById('expanded-img');
+const closeBtn = document.getElementById('close-btn');
+
+// Quando a foto de perfil for clicada
+profilePic.addEventListener('click', function () {
+    expandedImg.src = this.src; // Define a imagem ampliada como a mesma da foto de perfil
+    overlay.style.display = 'flex'; // Mostra o overlay
+});
+
+// Quando o botão de fechar for clicado
+closeBtn.addEventListener('click', function () {
+    overlay.style.display = 'none'; // Esconde o overlay
+});
+
+// Quando clicar fora da imagem ampliada, fechar o overlay
+overlay.addEventListener('click', function (event) {
+    if (event.target === overlay) {
+        overlay.style.display = 'none'; // Esconde o overlay
+    }
+});
